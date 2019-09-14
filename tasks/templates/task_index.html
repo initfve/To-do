@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+    <div class="container">
+        <div class="title row">
+            <div class="col-sm-6">
+                <h5>Good morning!</h5>
+                <h1 class="font-weight-bold">Jacob</h1>
+                <p class="text-muted">Wednesday, 4 September</p>
+            </div>
+            <div class="col-sm-6 my-auto ">
+                <img class="profile-photo float-right d-none d-md-block " src="boy.png">
+            </div>
+        </div>
+        <div class="row stats_row">
+            <div class="col-lg col-sm-12 stats" style="background-color: #f5c502"><h3>65</h3> Created Tasks</div>
+            <div class="col-lg  col-sm-12 stats" style="background-color: #121212; color:whitesmoke"><h3>36</h3> Completed Tasks</div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-list-ul"></i>
+                        <h4 class="card-title">All Schedule</h4>
+                        <p class="card-text">65 Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="far fa-user"></i>
+                        <h4 class="card-title">Personal</h4>
+                        <p class="card-text">12 Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="far fa-building"></i>
+                        <h4 class="card-title">Work Projects</h4>
+                        <p class="card-text">23 Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4 class="card-title">Presentation</h4>
+                        <p class="card-text">7 Tasks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="far fa-bookmark"></i>
+                        <h4 class="card-title">Books</h4>
+                        <p class="card-text">7 Tasks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4 class="card-title">One Million Ideas</h4>
+                        <p class="card-text">16 Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

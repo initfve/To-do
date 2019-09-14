@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<link rel="stylesheet" href="{% static "style.css" %}">
+<div class="container">
+        <div class="title row">
+            <div class="col-sm-6">
+                <h5>{{greeting}}!</h5>
+                <h1 class="font-weight-bold">{{username|capfirst}}</h1>
+                <p class="text-muted">{{date}}</p>
+            </div>
+            <div class="col-sm-6 my-auto ">
+                <img class="profile-photo float-right d-none d-md-block " src="{% static "boy.png" %}">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg stats col-sm-12" style="background-color: #f5c502;"><h3>{{category|capfirst}}</h3>Category</div>
+            <div class="col-lg stats col-sm-12" style="background-color: #121212; color:whitesmoke"><h3>{{number_of_tasks}}</h3>Tasks</div>
+        </div>
+        <div class="row">
+            <div class="col-lg col-sm-12 lists">
+                <h3 style="color:#7bbb5e">To do</h3>
+                {% for task in tasks %}
+                    <span class="one_item">{{ task.content }}  <a href="{% url 'make_task_done' task.category.title task.pk %}"><input type="button" class="done btn" value="Done"></a></span><br>
+                {% endfor %}
+                <span class="one_item"><input class="input_task" id="input_task"> <input type="button" class="done btn" value="Add" id="add_task" onclick="add_task()"></span><br>
+
+            </div>
+            <div class="col-lg col-sm-12 lists">
+                <h3 style="color:#51372A">Done</h3>
+                {% for done_task in done_tasks %}
+                    <span class="one_item">{{done_task.content}} <a href="{% url 'delete_task' done_task.category.title done_task.pk %}"><input type="button" class="delete btn" value="Delete"></a></span><br>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function add_task() {
+        let input = document.getElementById('input_task').value;
+        const form_data = new FormData();
+        form_data.append('content', input);
+        form_data.append('done', "False");
+        form_data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "task_detail"  category  %}',
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success:function(response) {
+                document.getElementById("body").innerHTML=response;
+                console.log(response)
+            }
+        });
+        }
+    </script>
+{% endblock %}

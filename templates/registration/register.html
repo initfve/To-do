@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<body class="text-center">
+    <link rel="stylesheet" href="{% static 'login_style.css' %}">
+    <div class="position-absolute w-100 p-4 d-flex flex-column align-items-end">
+    <div class="w-25 toast_w">
+        {% for message in messages %}
+            <div class="toast ml-auto" role="alert" data-delay="2500" data-autohide="true">
+            <div class="toast-header">
+                <strong class="mr-auto text-danger">{{ message.extra_tags }}</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+    <script>
+        $('.toast').toast('show');
+    </script>
+
+
+    <form class="form-signin" method="post">
+        {% csrf_token %}
+    <i class="fas fa-stream logo"></i> <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+
+  <label for="inputLogin" class="sr-only">Login</label>
+  <input id="inputLogin" name="username" class="form-control" placeholder="Login" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="password1" class="form-control" placeholder="Password" required>
+  <label for="reinputPassword" class="sr-only">Password</label>
+   <input type="password" id="reinputPassword" name="password2" class="form-control" placeholder="Password confirmation" style="margin-bottom: 10px;" required>
+        <div class="checkbox mb-3">
+   <label>
+      Already have an account? <a href="{% url 'login_url' %}">Sign in</a>
+    </label>
+
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+
+</body>
+{% endblock %}

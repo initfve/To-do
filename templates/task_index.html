@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<link rel="stylesheet" href="{% static "style.css" %}">
+    <div class="container">
+        <div class="title row">
+            <div class="col-sm-6">
+                <h5>{{ greeting }}!</h5>
+                <h1 class="font-weight-bold">{{username|capfirst}}</h1>
+                <p class="text-muted">{{date}}</p>
+            </div>
+            <div class="col-sm-6 my-auto ">
+                <img class="profile-photo float-right d-none d-md-block " src="{% static "boy.png" %}">
+            </div>
+        </div>
+        <div class="row stats_row">
+            <div class="col-lg col-sm-12 stats" style="background-color: #f5c502"><h3>{{created_tasks}}</h3> Created Tasks</div>
+            <div class="col-lg  col-sm-12 stats" style="background-color: #121212; color:whitesmoke"><h3>{{completed_tasks}}</h3> Completed Tasks</div>
+        </div>
+        <div class="row">
+
+
+
+
+           {% for category in categories %}
+
+                <div class="col-sm-4">
+                <a href="{% url "task_detail" category.0.title%}">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="{{ category.0.icon  }}"></i>
+                        <h4 class="card-title">{{category.0.title}}</h4>
+                        <p class="card-text">{{category.1}} Tasks</p>
+                    </div>
+                </div>
+                    </a>
+            </div>
+
+           {% endfor %}
+
+
+        </div>
+    </div>
+{% endblock %}
