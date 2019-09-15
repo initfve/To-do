@@ -5,7 +5,6 @@ from .form import TaskForm
 from .view_tools import get_formatted_date, get_greeting, get_detail_category
 
 
-@login_required
 def task_index(request):
     categories = Category.objects.only("title")
     number_of_tasks = []

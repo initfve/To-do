@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 class CustomUserCreationForm(forms.Form):
     username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
-    gender = forms.ChoiceField(label="Choose your gender", choices=((1, "Famale"), (2, "Male")))
+    icon = forms.FileField(upload_to='files/')
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput, strip=True, min_length=6,
                                 max_length=20)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)

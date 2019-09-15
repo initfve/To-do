@@ -66,3 +66,8 @@ a:hover{
     color: #f5c502;
 
 }
+.choose_icon{
+  border-radius: 50%;
+  height: 4rem;
+  border: 3px dashed #666666;
+}

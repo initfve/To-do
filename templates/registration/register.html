@@ -37,6 +37,11 @@
   <label for="reinputPassword" class="sr-only">Password</label>
    <input type="password" id="reinputPassword" name="password2" class="form-control" placeholder="Password confirmation" style="margin-bottom: 10px;" required>
         <div class="checkbox mb-3">
+
+       <img class="choose_icon" src="{% static 'boy.png' %}">
+       <input type="radio" name="icon" value="boy.png" >
+       <img class="choose_icon" src="{% static 'girl.png' %}">
+       <input type="radio" name="icon" value="girl.png">
    <label>
       Already have an account? <a href="{% url 'login_url' %}">Sign in</a>
     </label>
