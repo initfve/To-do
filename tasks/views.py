@@ -4,7 +4,7 @@ from .models import Category, Task
 from .form import TaskForm
 from .view_tools import get_formatted_date, get_greeting, get_detail_category
 
-
+@login_required
 def task_index(request):
     categories = Category.objects.only("title")
     number_of_tasks = []
@@ -32,7 +32,11 @@ def task_index(request):
 
 @login_required
 def task_detail(request, category):
-    c = Category.objects.get(title=category)
+    category = category.replace("%20", " ")
+    if category == "All Schedule":
+        c = Category.objects.all()
+    else:
+        c = Category.objects.get(title=category)
     a = request.user
     if request.method == "POST":
         form = TaskForm(request.POST)
@@ -52,6 +56,7 @@ def task_detail(request, category):
 
 @login_required
 def make_task_done(request, category, pk):
+    category = category.replace("%20", " ")
     task = Task.objects.get(pk=pk)
     task.done = True
     task.save()
@@ -60,5 +65,6 @@ def make_task_done(request, category, pk):
 
 @login_required
 def delete_task(request, category, pk):
+    category = category.replace("%20", " ")
     Task.objects.get(pk=pk).delete()
     return render(request, 'task_detail.html', get_detail_category(request, category))

@@ -19,12 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r8bk)71540vh$*a2=7#mickr%!+18p@y*^s=wez5z@+u(u37dl'
+SECRET_KEY = 'r8bk)71540vh$lallalawqq12c!+18p@y*^s=wez5z@+u(u37dl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        'www.todo.jakubkowalczk.dev',
+        'todo.jakubkowalczyk.dev',
+]
 
 # Application definition
 
@@ -114,12 +117,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+#STATIC_URL = '/static/'
+
+#STATICFILES_DIRS = [
+   # os.path.join(BASE_DIR, "static"),
+#]
+
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#MEDIA_URL = "/media/"
+
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_URL = "/media/"
+ENV_PATH = os.path.abspath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(ENV_PATH, '../public/static/')
+MEDIA_ROOT = os.path.join(ENV_PATH, '../public/media/')

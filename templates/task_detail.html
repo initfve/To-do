@@ -14,7 +14,12 @@
             </div>
         </div>
         <div class="row ">
-            <div class="col-lg stats col-sm-12" style="background-color: #f5c502;"><h3>{{category|capfirst}}</h3>Category</div>
+            <div class="col-lg stats col-sm-12" style="background-color: #f5c502;">
+                <div class="row" style="margin-bottom: 0px">
+                    <a href="{% url 'task_index' %}"> <div class="col-2" style="text-align: center"><i class="far fa-arrow-alt-circle-left" style="color:white; font-size: 3rem; padding-top: 0.5rem"></i></div></a>
+                    <div class="col-10"><h3>{{category|capfirst}}</h3>Category</div>
+                </div>
+            </div>
             <div class="col-lg stats col-sm-12" style="background-color: #121212; color:whitesmoke"><h3>{{number_of_tasks}}</h3>Tasks</div>
         </div>
         <div class="row">
