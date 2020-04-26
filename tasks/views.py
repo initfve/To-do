@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Category, Task
+
 from .form import TaskForm
+from .models import Category, Task
 from .view_tools import get_formatted_date, get_greeting, get_detail_category
+
 
 @login_required
 def task_index(request):
